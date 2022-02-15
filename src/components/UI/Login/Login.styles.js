@@ -95,7 +95,6 @@ export const StyledInput = styled.input`
     margin-top: 30px;
   }
   :valid ~ ${StyledLabel} {
-    text-transform: uppercase;
     font-weight: 700;
     transform: translate(0, -35px);
   }

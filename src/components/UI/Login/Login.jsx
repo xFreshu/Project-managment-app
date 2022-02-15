@@ -9,8 +9,10 @@ import {
   ErrorMessage
 } from './Login.styles';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const Login = () => {
+const Login = ({ setUserData }) => {
   const {
     register,
     handleSubmit,
@@ -18,9 +20,19 @@ const Login = () => {
     reset
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    if (data.login === 'projectManager') {
+      data['role'] = 'PM';
+      console.log(data);
+    } else if (data.login === 'developer') {
+      data['role'] = 'developer';
+    }
+    setUserData(data);
+    history('/dashboard');
     reset();
   };
+
+  const history = useNavigate();
+
   return (
     <Container>
       <LoginCard>
@@ -41,5 +53,7 @@ const Login = () => {
     </Container>
   );
 };
-
+Login.propTypes = {
+  setUserData: PropTypes.func
+};
 export default Login;
