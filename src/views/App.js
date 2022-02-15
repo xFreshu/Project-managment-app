@@ -3,7 +3,7 @@ import Login from '../components/UI/Login/Login';
 import Dashboard from '../components/UI/Dashboard/Dashboard';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-const DUMMY_DATA = [
+export const DUMMY_DATA = [
   { id: 1, name: 'PM task', assigned: 'PM' },
   { id: 2, name: 'Developer task', assigned: 'developer' }
 ];

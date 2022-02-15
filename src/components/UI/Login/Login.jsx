@@ -20,7 +20,7 @@ const Login = ({ setUserData }) => {
     reset
   } = useForm();
   const onSubmit = (data) => {
-    if (data.login === 'projectManager') {
+    if (data.login === 'pm') {
       data['role'] = 'PM';
       console.log(data);
     } else if (data.login === 'developer') {
