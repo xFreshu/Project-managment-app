@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Container,
   Question,
@@ -12,7 +12,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Login = ({ setUserData }) => {
+const Login = ({ userData, setUserData }) => {
   const {
     register,
     handleSubmit,
@@ -32,7 +32,9 @@ const Login = ({ setUserData }) => {
     history('/dashboard');
     reset();
   };
-
+  useEffect(() => {
+    localStorage.setItem('name', JSON.stringify(userData));
+  }, [userData]);
   const history = useNavigate();
 
   return (
@@ -56,6 +58,7 @@ const Login = ({ setUserData }) => {
   );
 };
 Login.propTypes = {
-  setUserData: PropTypes.func
+  setUserData: PropTypes.func,
+  userData: PropTypes.object
 };
 export default Login;

@@ -11,7 +11,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route element={<Login setUserData={setUserData} />} path="/" />
+        <Route element={<Login setUserData={setUserData} userData={userData} />} path="/" />
         <Route
           element={<Dashboard userData={userData} DUMMY_DATA={DUMMY_DATA} />}
           path="/dashboard"
