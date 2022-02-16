@@ -25,6 +25,8 @@ const Login = ({ setUserData }) => {
       console.log(data);
     } else if (data.login === 'developer') {
       data['role'] = 'developer';
+    } else if (data.login === 'client') {
+      data['role'] = 'client';
     }
     setUserData(data);
     history('/dashboard');

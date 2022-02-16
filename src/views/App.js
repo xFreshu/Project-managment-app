@@ -3,10 +3,9 @@ import Login from '../components/UI/Login/Login';
 import Dashboard from '../components/UI/Dashboard/Dashboard';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-export const DUMMY_DATA = [
-  { id: 1, name: 'PM task', assigned: 'PM' },
-  { id: 2, name: 'Developer task', assigned: 'developer' }
-];
+import { DUMMY_DATA } from '../data/Tasks';
+import ListOfTasks from '../components/UI/ListOfTasks/ListOfTasks';
+
 const App = () => {
   const [userData, setUserData] = useState({});
   return (
@@ -17,6 +16,7 @@ const App = () => {
           element={<Dashboard userData={userData} DUMMY_DATA={DUMMY_DATA} />}
           path="/dashboard"
         />
+        <Route element={<ListOfTasks userData={userData} />} path="/list-of-tasks" />
       </Routes>
     </Router>
   );

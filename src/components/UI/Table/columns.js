@@ -8,7 +8,23 @@ export const COLUMNS = [
     accessor: 'name'
   },
   {
+    Header: 'Notes',
+    accessor: 'notes'
+  },
+  {
     Header: 'Assigned',
     accessor: 'assigned'
+  },
+  {
+    Header: 'Environment',
+    accessor: 'environment'
+  },
+  {
+    Header: 'Deadline',
+    accessor: 'deadline'
+  },
+  {
+    Header: 'Status',
+    accessor: 'status'
   }
 ];

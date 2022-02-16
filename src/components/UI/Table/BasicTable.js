@@ -1,11 +1,13 @@
 import React, { useMemo } from 'react';
+import { Container, StyledTable } from './BasicTable.styles';
 import { useTable } from 'react-table';
 import { COLUMNS } from './columns';
+import { DUMMY_DATA } from '../../../data/Tasks';
 import PropTypes from 'prop-types';
 
-const BasicTable = ({ getAssignedArray }) => {
+const BasicTable = () => {
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => getAssignedArray, []);
+  const data = useMemo(() => DUMMY_DATA, []);
   const tableInstance = useTable({
     columns,
     data
@@ -13,8 +15,8 @@ const BasicTable = ({ getAssignedArray }) => {
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance;
   return (
-    <div>
-      <table {...getTableProps()}>
+    <Container>
+      <StyledTable {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -36,8 +38,8 @@ const BasicTable = ({ getAssignedArray }) => {
             );
           })}
         </tbody>
-      </table>
-    </div>
+      </StyledTable>
+    </Container>
   );
 };
 BasicTable.propTypes = {
