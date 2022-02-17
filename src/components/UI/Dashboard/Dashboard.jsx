@@ -17,6 +17,8 @@ const Dashboard = ({ userData, DUMMY_DATA }) => {
     const initialValue = JSON.parse(saved);
     return initialValue || '';
   });
+  //For display in modal data
+  const [jsonTask, setJsonTask] = useState({});
   //Assign data from local storage to userData
   userData = name;
   //Get the right one Array depending on the role
@@ -33,7 +35,7 @@ const Dashboard = ({ userData, DUMMY_DATA }) => {
             <div>Your login do not have permission for that application :(</div>
           )
         ) : (
-          <BasicTable />
+          <BasicTable jsonTask={jsonTask} setJsonTask={setJsonTask} />
         )}
       </div>
     </>

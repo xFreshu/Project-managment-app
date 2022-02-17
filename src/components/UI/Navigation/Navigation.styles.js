@@ -21,4 +21,5 @@ export const Login = styled.li`
   position: absolute;
   left: 10px;
   margin-left: 0;
+  cursor: default;
 `;

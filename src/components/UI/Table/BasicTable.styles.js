@@ -5,13 +5,21 @@ export const StyledTable = styled.table`
   border: 1px solid black;
 
   tr {
+    :nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
     :last-child {
       td {
         border-bottom: 0;
       }
     }
   }
-
+  th {
+    background-color: #39393a;
+    color: white;
+    font-weight: 700;
+  }
   th,
   td {
     margin: 0;

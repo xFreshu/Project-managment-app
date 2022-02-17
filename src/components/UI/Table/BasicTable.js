@@ -5,15 +5,15 @@ import { COLUMNS } from './columns';
 import { DUMMY_DATA } from '../../../data/Tasks';
 import PropTypes from 'prop-types';
 
-const BasicTable = () => {
+const BasicTable = ({ jsonTask, setJsonTask }) => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => DUMMY_DATA, []);
   const tableInstance = useTable({
     columns,
     data
   });
-
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance;
+  console.log(jsonTask);
   return (
     <Container>
       <StyledTable {...getTableProps()}>
@@ -30,7 +30,7 @@ const BasicTable = () => {
           {rows.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr {...row.getRowProps()} onClick={() => setJsonTask(row.values)}>
                 {row.cells.map((cell) => {
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
                 })}
@@ -39,10 +39,13 @@ const BasicTable = () => {
           })}
         </tbody>
       </StyledTable>
+      <div>{jsonTask.name}</div>
     </Container>
   );
 };
 BasicTable.propTypes = {
-  getAssignedArray: PropTypes.array
+  getAssignedArray: PropTypes.array,
+  jsonTask: PropTypes.object,
+  setJsonTask: PropTypes.func
 };
 export default BasicTable;
