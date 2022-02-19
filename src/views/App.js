@@ -5,6 +5,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { DUMMY_DATA } from '../data/Tasks';
 import ListOfTasks from '../components/UI/ListOfTasks/ListOfTasks';
+import TestView from './testView';
 
 const App = () => {
   const [userData, setUserData] = useState({});
@@ -17,6 +18,7 @@ const App = () => {
           path="/dashboard"
         />
         <Route element={<ListOfTasks userData={userData} />} path="/list-of-tasks" />
+        <Route element={<TestView />} path="/test" />
       </Routes>
     </Router>
   );
