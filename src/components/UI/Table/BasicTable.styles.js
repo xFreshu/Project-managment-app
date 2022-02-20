@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const StyledTable = styled.table`
   border-spacing: 0;
   border: 1px solid black;
-
   tr {
     :nth-child(even) {
       background-color: #f2f2f2;
@@ -19,6 +18,27 @@ export const StyledTable = styled.table`
     background-color: #39393a;
     color: white;
     font-weight: 700;
+    :nth-child(1) {
+      width: 100px;
+    }
+    :nth-child(2) {
+      width: 200px;
+    }
+    :nth-child(3) {
+      width: 50%;
+    }
+    :nth-child(4) {
+      width: 100px;
+    }
+    :nth-child(5) {
+      width: 100px;
+    }
+    :nth-child(6) {
+      width: 100px;
+    }
+    :nth-child(7) {
+      width: 100px;
+    }
   }
   th,
   td {

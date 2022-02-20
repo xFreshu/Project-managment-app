@@ -1,7 +1,7 @@
 export const DUMMY_DATA = [
   {
     id: 1,
-    name: 'PM task',
+    name: 'PM task PM task PM task PM task PM task PM task PM task',
     notes: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
     assigned: 'PM',
     environment: 'test',
