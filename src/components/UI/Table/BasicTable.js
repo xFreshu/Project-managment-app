@@ -1,13 +1,14 @@
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Container, StyledTable } from './BasicTable.styles';
 import { useTable } from 'react-table';
 import { COLUMNS } from './columns';
-import { DUMMY_DATA } from '../../../data/Tasks';
 import PropTypes from 'prop-types';
+import { AppContext } from '../../../providers/AppProvider';
 
 const BasicTable = ({ jsonTask, setJsonTask }) => {
+  const { tickets } = useContext(AppContext);
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => DUMMY_DATA, []);
+  const data = useMemo(() => tickets, []);
   const tableInstance = useTable({
     columns,
     data

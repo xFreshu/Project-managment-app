@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './views/App';
 import { GlobalStyles } from './assets/GlobalStyles';
-import { Provider } from 'react-redux';
-import store from './app/store';
+import AppProvider from './providers/AppProvider';
+
 ReactDOM.render(
-  <Provider store={store}>
+  <AppProvider>
     <GlobalStyles />
     <App />
-  </Provider>,
+  </AppProvider>,
   document.getElementById('root')
 );

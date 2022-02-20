@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   Container,
   Question,
@@ -10,9 +10,10 @@ import {
 } from './Login.styles';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { AppContext } from '../../../providers/AppProvider';
 
-const Login = ({ userData, setUserData }) => {
+const Login = () => {
+  const { userData, setUserData } = useContext(AppContext);
   const {
     register,
     handleSubmit,
@@ -57,8 +58,5 @@ const Login = ({ userData, setUserData }) => {
     </Container>
   );
 };
-Login.propTypes = {
-  setUserData: PropTypes.func,
-  userData: PropTypes.object
-};
+
 export default Login;

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { StyledNavigation, Login } from './Navigation.styles';
-import PropTypes from 'prop-types';
+import { AppContext } from '../../../providers/AppProvider';
 
-const Navigation = ({ userData }) => {
+const Navigation = () => {
+  const { userData } = useContext(AppContext);
   return (
     <StyledNavigation>
       <ul>
@@ -26,7 +27,4 @@ const Navigation = ({ userData }) => {
   );
 };
 
-Navigation.propTypes = {
-  userData: PropTypes.object
-};
 export default Navigation;
