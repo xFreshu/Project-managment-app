@@ -11,8 +11,13 @@ export const AppContext = React.createContext({
 
 const AppProvider = ({ children }) => {
   const [tickets, setTickets] = useState(DUMMY_DATA);
-  const [userData, setUserData] = useState({});
-
+  const [name, setName] = useState(() => {
+    //Get key name from local storage
+    const saved = localStorage.getItem('name');
+    const initialValue = JSON.parse(saved);
+    return initialValue || '';
+  });
+  const [userData, setUserData] = useState(name);
   return (
     <AppContext.Provider
       value={{

@@ -5,7 +5,7 @@ import { COLUMNS } from './columns';
 import PropTypes from 'prop-types';
 import { AppContext } from '../../../providers/AppProvider';
 
-const BasicTable = ({ jsonTask, setJsonTask }) => {
+const BasicTable = () => {
   const { tickets } = useContext(AppContext);
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => tickets, []);
@@ -14,7 +14,6 @@ const BasicTable = ({ jsonTask, setJsonTask }) => {
     data
   });
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance;
-  console.log(jsonTask);
   return (
     <Container>
       <StyledTable {...getTableProps()}>
@@ -31,7 +30,7 @@ const BasicTable = ({ jsonTask, setJsonTask }) => {
           {rows.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()} onClick={() => setJsonTask(row.values)}>
+              <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
                 })}
@@ -40,7 +39,6 @@ const BasicTable = ({ jsonTask, setJsonTask }) => {
           })}
         </tbody>
       </StyledTable>
-      <div>{jsonTask.name}</div>
     </Container>
   );
 };
