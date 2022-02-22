@@ -32,15 +32,30 @@ const DashboardCard = styled.div`
     }
     :nth-child(2) {
       position: relative;
-      background-color: teal;
       width: 65%;
       div {
         display: flex;
         flex-direction: column;
         width: 100%;
-        background-color: red;
         text-align: center;
         margin: 20px 0;
+        padding: 0 40px;
+        label {
+          margin-top: 40px;
+          font-size: 1.4rem;
+          font-weight: 700;
+        }
+        input,
+        textarea {
+          margin-top: 20px;
+          letter-spacing: 1px;
+          font-size: 1.2rem;
+        }
+        textarea {
+          height: 150px;
+          resize: none;
+          font-family: 'Montserrat', sans-serif;
+        }
       }
       :after {
         position: absolute;
@@ -115,13 +130,6 @@ const BottomInfoTicket = styled.div`
   align-items: center;
 `;
 
-const Test = styled.div`
-  display: flex;
-  height: 100%;
-  width: 100%;
-  background-color: tan;
-`;
-
 const Dashboard = () => {
   let { userData, tickets } = useContext(AppContext);
   //Get the right one Array depending on the role
@@ -166,11 +174,30 @@ const Dashboard = () => {
             </ul>
           </div>
           <div>
-            <div>
-              <span>Test</span>
-              <label>Test</label>
-              <input type="text" />
-            </div>
+            {ticketData.id !== '' ? (
+              <div>
+                <span>Ticket Details</span>
+                <label>Ticket name:</label>
+                <input type="text" value={ticketData.name} disabled />
+                <label>Notes:</label>
+                <textarea value={ticketData.notes} disabled />
+                <label>Environment:</label>
+                <input type="text" value={ticketData.environment} disabled />{' '}
+                <label>Deadline:</label>
+                <input type="text" value={ticketData.deadline} disabled />
+              </div>
+            ) : (
+              <div
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  alignContent: 'center',
+                  display: 'flex',
+                  height: '100%'
+                }}>
+                Click on ticket to display details
+              </div>
+            )}
           </div>
         </DashboardCard>
         <div>Widget pie chart</div>
