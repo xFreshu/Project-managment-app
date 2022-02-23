@@ -7,11 +7,13 @@ export const AppContext = React.createContext({
   userData: {},
   setTickets: () => {},
   setUserData: () => {},
-  deleteTicket: () => {}
+  deleteTicket: () => {},
+  setDisplayTicket: () => {}
 });
 
 const AppProvider = ({ children }) => {
   const [tickets, setTickets] = useState(DUMMY_DATA);
+  const [displayTicket, setDisplayTicket] = useState(false);
   const [name, setName] = useState(() => {
     //Get key name from local storage
     const saved = localStorage.getItem('name');
@@ -22,6 +24,7 @@ const AppProvider = ({ children }) => {
 
   const deleteTicket = (id) => {
     const updatedTicketArray = tickets.filter((item) => item.id !== id);
+    setDisplayTicket(false);
     setTickets(updatedTicketArray);
   };
 
@@ -32,7 +35,9 @@ const AppProvider = ({ children }) => {
         setTickets,
         userData,
         setUserData,
-        deleteTicket
+        deleteTicket,
+        displayTicket,
+        setDisplayTicket
       }}>
       {children}
     </AppContext.Provider>

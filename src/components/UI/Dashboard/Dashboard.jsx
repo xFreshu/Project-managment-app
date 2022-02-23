@@ -139,7 +139,7 @@ const BottomInfoTicket = styled.div`
 `;
 
 const Dashboard = () => {
-  let { userData, tickets, deleteTicket } = useContext(AppContext);
+  let { userData, tickets, deleteTicket, displayTicket, setDisplayTicket } = useContext(AppContext);
   //Get the right one Array depending on the role
   const getAssignedArray = tickets.filter((item) => item.assigned === userData.role);
   const [ticketData, setTicketData] = useState({
@@ -149,7 +149,7 @@ const Dashboard = () => {
     environment: '',
     deadline: ''
   });
-  console.log(ticketData);
+
   return (
     <>
       <Navigation userData={userData} />
@@ -159,15 +159,16 @@ const Dashboard = () => {
             <ul>
               {tickets.map(({ id, name, notes, environment, deadline }) => (
                 <TicketCard
-                  onClick={() =>
+                  onClick={() => {
                     setTicketData({
                       id: id,
                       name: name,
                       notes: notes,
                       environment: environment,
                       deadline: deadline
-                    })
-                  }>
+                    });
+                    setDisplayTicket(true);
+                  }}>
                   <div>
                     <span>{name}</span>
                     <span>{id}</span>
@@ -182,7 +183,7 @@ const Dashboard = () => {
             </ul>
           </div>
           <div>
-            {ticketData.id !== '' ? (
+            {displayTicket === true ? (
               <div>
                 <span>Ticket Details</span>
                 <label>Ticket name:</label>
