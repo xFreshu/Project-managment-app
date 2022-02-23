@@ -1,13 +1,8 @@
 import React, { useContext, useState } from 'react';
-import TicketForm from '../TicketForm/TicketForm';
-import BasicTable from '../Table/BasicTable';
 import Navigation from '../Navigation/Navigation';
 import { Wrapper } from './Dashboard.styles';
 import { AppContext } from '../../../providers/AppProvider';
-import TicketContainer from '../TicketContainer/TicketContainer';
 import styled from 'styled-components';
-import { useFormState } from 'react-hook-form';
-import { StyledInput, StyledLabel } from '../Login/Login.styles';
 
 const DashboardCard = styled.div`
   background-color: #fff;
@@ -40,6 +35,19 @@ const DashboardCard = styled.div`
         text-align: center;
         margin: 20px 0;
         padding: 0 40px;
+        div {
+          display: flex;
+          flex-direction: row;
+          margin-top: 50px;
+          justify-content: space-evenly;
+          button {
+            font-size: 1.2rem;
+            padding: 5px 8px;
+            border-radius: 10px;
+            border: solid 1px #000;
+            background-color: transparent;
+          }
+        }
         label {
           margin-top: 40px;
           font-size: 1.4rem;
@@ -131,7 +139,7 @@ const BottomInfoTicket = styled.div`
 `;
 
 const Dashboard = () => {
-  let { userData, tickets } = useContext(AppContext);
+  let { userData, tickets, deleteTicket } = useContext(AppContext);
   //Get the right one Array depending on the role
   const getAssignedArray = tickets.filter((item) => item.assigned === userData.role);
   const [ticketData, setTicketData] = useState({
@@ -185,6 +193,10 @@ const Dashboard = () => {
                 <input type="text" value={ticketData.environment} disabled />{' '}
                 <label>Deadline:</label>
                 <input type="text" value={ticketData.deadline} disabled />
+                <div>
+                  <button onClick={() => deleteTicket(ticketData.id)}>Delete</button>
+                  <button>Edit</button>
+                </div>
               </div>
             ) : (
               <div

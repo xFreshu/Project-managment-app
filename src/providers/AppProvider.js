@@ -6,7 +6,8 @@ export const AppContext = React.createContext({
   tickets: [],
   userData: {},
   setTickets: () => {},
-  setUserData: () => {}
+  setUserData: () => {},
+  deleteTicket: () => {}
 });
 
 const AppProvider = ({ children }) => {
@@ -18,13 +19,20 @@ const AppProvider = ({ children }) => {
     return initialValue || '';
   });
   const [userData, setUserData] = useState(name);
+
+  const deleteTicket = (id) => {
+    const updatedTicketArray = tickets.filter((item) => item.id !== id);
+    setTickets(updatedTicketArray);
+  };
+
   return (
     <AppContext.Provider
       value={{
         tickets,
         setTickets,
         userData,
-        setUserData
+        setUserData,
+        deleteTicket
       }}>
       {children}
     </AppContext.Provider>
