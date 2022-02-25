@@ -35,5 +35,14 @@ export const DUMMY_DATA = [
     environment: 'dev',
     deadline: '22-2-2022',
     status: 'pending'
+  },
+  {
+    id: 6,
+    name: 'Change value',
+    notes: 'ipsum lorem ipsum lorem ipsum ipsum lorem ipsum',
+    assigned: 'developer',
+    environment: 'prod',
+    deadline: '22-2-2022',
+    status: 'pending'
   }
 ];

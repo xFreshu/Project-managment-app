@@ -9,6 +9,7 @@ import {
 } from './Dashboard.styles';
 import { AppContext } from '../../../providers/AppProvider';
 import TicketDetails from '../TicketDetails/TicketDetails';
+import { PieChart } from 'react-minimal-pie-chart';
 
 const Dashboard = () => {
   let { userData, tickets, deleteTicket, displayTicket, setDisplayTicket } = useContext(AppContext);
@@ -22,6 +23,19 @@ const Dashboard = () => {
     deadline: ''
   });
 
+  const environmentList = tickets.map((item) => item.environment);
+
+  const count = { dev: 0, test: 0, prod: 0 };
+  //For of loop through array of environment list and counting, returning object
+  for (const element of environmentList) {
+    if (count[element]) {
+      count[element] += 1;
+    } else {
+      count[element] = 1;
+    }
+  }
+
+  console.log(count);
   return (
     <>
       <Navigation userData={userData} />
@@ -71,7 +85,16 @@ const Dashboard = () => {
             )}
           </div>
         </DashboardCard>
-        <div>Widget pie chart</div>
+        <div>
+          <PieChart
+            data={[
+              { title: 'One', value: count['dev'], color: '#E38627' },
+              { title: 'Two', value: count['test'], color: '#C13C37' },
+              { title: 'Three', value: count['prod'], color: '#6A2135' }
+            ]}
+          />
+          ;
+        </div>
       </Wrapper>
     </>
   );
