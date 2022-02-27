@@ -10,6 +10,7 @@ import {
 import { AppContext } from '../../../providers/AppProvider';
 import TicketDetails from '../TicketDetails/TicketDetails';
 import { PieChart } from 'react-minimal-pie-chart';
+import TicketChart from '../TicketChart/TicketChart';
 
 const Dashboard = () => {
   let { userData, tickets, deleteTicket, displayTicket, setDisplayTicket } = useContext(AppContext);
@@ -85,16 +86,7 @@ const Dashboard = () => {
             )}
           </div>
         </DashboardCard>
-        <div>
-          <PieChart
-            data={[
-              { title: 'One', value: count['dev'], color: '#E38627' },
-              { title: 'Two', value: count['test'], color: '#C13C37' },
-              { title: 'Three', value: count['prod'], color: '#6A2135' }
-            ]}
-          />
-          ;
-        </div>
+        <TicketChart count={count} />
       </Wrapper>
     </>
   );
