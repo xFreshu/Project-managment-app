@@ -4,9 +4,9 @@ import { StyledNavigation, Login } from './Navigation.styles';
 import { AppContext } from '../../../providers/AppProvider';
 
 const Navigation = () => {
-  const { userData } = useContext(AppContext);
+  const { userData, setDisplayTicket } = useContext(AppContext);
   return (
-    <StyledNavigation>
+    <StyledNavigation onClick={() => setDisplayTicket(false)}>
       <ul>
         <Login>Login: {userData.role}</Login>
         {userData.role !== 'client' ? (

@@ -8,7 +8,9 @@ export const AppContext = React.createContext({
   setTickets: () => {},
   setUserData: () => {},
   deleteTicket: () => {},
-  setDisplayTicket: () => {}
+  setDisplayTicket: () => {},
+  sendToTester: () => {},
+  sendToPM: () => {}
 });
 
 const AppProvider = ({ children }) => {
@@ -28,6 +30,27 @@ const AppProvider = ({ children }) => {
     setTickets(updatedTicketArray);
   };
 
+  const sendToTester = (id) => {
+    let updatedTicket = tickets.map((item) => {
+      if (item.id === id) {
+        item.assigned = 'tester';
+        setDisplayTicket(false);
+      }
+      return item;
+    });
+    setTickets(updatedTicket);
+  };
+  const sendToPM = (id) => {
+    let updatedTicket = tickets.map((item) => {
+      if (item.id === id) {
+        item.assigned = 'PM';
+        setDisplayTicket(false);
+      }
+      return item;
+    });
+    setTickets(updatedTicket);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -37,7 +60,9 @@ const AppProvider = ({ children }) => {
         setUserData,
         deleteTicket,
         displayTicket,
-        setDisplayTicket
+        setDisplayTicket,
+        sendToTester,
+        sendToPM
       }}>
       {children}
     </AppContext.Provider>

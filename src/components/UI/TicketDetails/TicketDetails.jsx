@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { TicketDetailsStyles } from './TicketDetails.styles';
 import { AppContext } from '../../../providers/AppProvider';
-const TicketDetails = ({ ticketData }) => {
-  const { deleteTicket } = useContext(AppContext);
+const TicketDetails = ({ ticketData, userData }) => {
+  const { deleteTicket, sendToTester, sendToPM } = useContext(AppContext);
   return (
     <TicketDetailsStyles>
       <span>Ticket Details</span>
@@ -15,13 +15,22 @@ const TicketDetails = ({ ticketData }) => {
       <input type="text" value={ticketData.environment} disabled /> <label>Deadline:</label>
       <input type="text" value={ticketData.deadline} disabled />
       <div>
-        <button onClick={() => deleteTicket(ticketData.id)}>Delete</button>
+        {userData.role === 'PM' ? (
+          <button onClick={() => deleteTicket(ticketData.id)}>Delete</button>
+        ) : null}
+        {userData.role === 'developer' ? (
+          <button onClick={() => sendToTester(ticketData.id)}>Send to tester</button>
+        ) : null}
+        {userData.role === 'tester' ? (
+          <button onClick={() => sendToPM(ticketData.id)}>Send to PM</button>
+        ) : null}
         <button>Edit</button>
       </div>
     </TicketDetailsStyles>
   );
 };
 TicketDetails.propTypes = {
-  ticketData: PropTypes.object.isRequired
+  ticketData: PropTypes.object.isRequired,
+  userData: PropTypes.object.isRequired
 };
 export default TicketDetails;

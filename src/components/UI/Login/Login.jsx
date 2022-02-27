@@ -28,6 +28,8 @@ const Login = () => {
       data['role'] = 'developer';
     } else if (data.login === 'client') {
       data['role'] = 'client';
+    } else if (data.login === 'tester') {
+      data['role'] = 'tester';
     }
     setUserData(data);
     history('/dashboard');

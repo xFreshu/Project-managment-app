@@ -3,10 +3,11 @@ export const DUMMY_DATA = [
     id: 1,
     name: 'PM task PM task PM task PM task PM task PM task PM task',
     notes: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-    assigned: 'PM',
+    assigned: 'tester',
     environment: 'test',
     deadline: '16-2-2022',
-    status: 'In progress'
+    status: 'In progress',
+    statusValue: 2
   },
   {
     id: 2,
@@ -16,7 +17,8 @@ export const DUMMY_DATA = [
     assigned: 'developer',
     environment: 'test',
     deadline: '13-2-2022',
-    status: 'pending'
+    status: 'pending',
+    statusValue: 1
   },
   {
     id: 3,
@@ -25,7 +27,8 @@ export const DUMMY_DATA = [
     assigned: 'developer',
     environment: 'dev',
     deadline: '20-2-2022',
-    status: 'done'
+    status: 'done',
+    statusValue: 1
   },
   {
     id: 4,
@@ -34,7 +37,8 @@ export const DUMMY_DATA = [
     assigned: 'developer',
     environment: 'dev',
     deadline: '22-2-2022',
-    status: 'pending'
+    status: 'pending',
+    statusValue: 1
   },
   {
     id: 6,
@@ -43,6 +47,7 @@ export const DUMMY_DATA = [
     assigned: 'developer',
     environment: 'prod',
     deadline: '22-2-2022',
-    status: 'pending'
+    status: 'pending',
+    statusValue: 1
   }
 ];

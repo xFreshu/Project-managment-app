@@ -9,7 +9,6 @@ import {
 } from './Dashboard.styles';
 import { AppContext } from '../../../providers/AppProvider';
 import TicketDetails from '../TicketDetails/TicketDetails';
-import { PieChart } from 'react-minimal-pie-chart';
 import TicketChart from '../TicketChart/TicketChart';
 
 const Dashboard = () => {
@@ -44,7 +43,7 @@ const Dashboard = () => {
         <DashboardCard>
           <div>
             <ul>
-              {tickets.map(({ id, name, notes, environment, deadline }) => (
+              {getAssignedArray.map(({ id, name, notes, environment, deadline }) => (
                 <TicketCard
                   onClick={() => {
                     setTicketData({
@@ -71,7 +70,7 @@ const Dashboard = () => {
           </div>
           <div>
             {displayTicket === true ? (
-              <TicketDetails ticketData={ticketData} />
+              <TicketDetails ticketData={ticketData} userData={userData} />
             ) : (
               <div
                 style={{

@@ -26,5 +26,9 @@ export const COLUMNS = [
   {
     Header: 'Status',
     accessor: 'status'
+  },
+  {
+    Header: 'Ticket Status',
+    accessor: 'statusValue'
   }
 ];
