@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { TicketDetailsStyles } from './TicketDetails.styles';
 import { AppContext } from '../../../providers/AppProvider';
 const TicketDetails = ({ ticketData, userData }) => {
-  const { deleteTicket, sendToTester, sendToPM } = useContext(AppContext);
+  const { deleteTicket, ChangeValue } = useContext(AppContext);
   return (
     <TicketDetailsStyles>
       <span>Ticket Details</span>
@@ -19,10 +19,10 @@ const TicketDetails = ({ ticketData, userData }) => {
           <button onClick={() => deleteTicket(ticketData.id)}>Delete</button>
         ) : null}
         {userData.role === 'developer' ? (
-          <button onClick={() => sendToTester(ticketData.id)}>Send to tester</button>
+          <button onClick={() => ChangeValue(ticketData.id)}>Send to tester</button>
         ) : null}
         {userData.role === 'tester' ? (
-          <button onClick={() => sendToPM(ticketData.id)}>Send to PM</button>
+          <button onClick={() => ChangeValue(ticketData.id)}>Send to PM</button>
         ) : null}
         <button>Edit</button>
       </div>

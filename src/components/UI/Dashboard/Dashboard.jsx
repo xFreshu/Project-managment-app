@@ -5,11 +5,13 @@ import {
   DashboardCard,
   BottomInfoTicket,
   TicketCard,
-  StyledEnv
+  StyledEnv,
+  Title
 } from './Dashboard.styles';
 import { AppContext } from '../../../providers/AppProvider';
 import TicketDetails from '../TicketDetails/TicketDetails';
 import TicketChart from '../TicketChart/TicketChart';
+import BasicTable from '../Table/BasicTable';
 
 const Dashboard = () => {
   let { userData, tickets, deleteTicket, displayTicket, setDisplayTicket } = useContext(AppContext);
@@ -40,51 +42,56 @@ const Dashboard = () => {
     <>
       <Navigation userData={userData} />
       <Wrapper>
-        <DashboardCard>
-          <div>
-            <ul>
-              {getAssignedArray.map(({ id, name, notes, environment, deadline }) => (
-                <TicketCard
-                  onClick={() => {
-                    setTicketData({
-                      id: id,
-                      name: name,
-                      notes: notes,
-                      environment: environment,
-                      deadline: deadline
-                    });
-                    setDisplayTicket(true);
+        {userData.role !== 'client' ? (
+          <DashboardCard>
+            <div>
+              <ul>
+                <Title>Assigned tickets</Title>
+                {getAssignedArray.map(({ id, name, notes, environment, deadline }) => (
+                  <TicketCard
+                    onClick={() => {
+                      setTicketData({
+                        id: id,
+                        name: name,
+                        notes: notes,
+                        environment: environment,
+                        deadline: deadline
+                      });
+                      setDisplayTicket(true);
+                    }}>
+                    <div>
+                      <span>{name}</span>
+                      <span>{id}</span>
+                    </div>
+                    <p>{notes}</p>
+                    <BottomInfoTicket>
+                      <StyledEnv value={environment}>{environment}</StyledEnv>
+                      <span>{deadline}</span>
+                    </BottomInfoTicket>
+                  </TicketCard>
+                ))}
+              </ul>
+            </div>
+            <div>
+              {displayTicket === true ? (
+                <TicketDetails ticketData={ticketData} userData={userData} />
+              ) : (
+                <div
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    alignContent: 'center',
+                    display: 'flex',
+                    height: '100%'
                   }}>
-                  <div>
-                    <span>{name}</span>
-                    <span>{id}</span>
-                  </div>
-                  <p>{notes}</p>
-                  <BottomInfoTicket>
-                    <StyledEnv value={environment}>{environment}</StyledEnv>
-                    <span>{deadline}</span>
-                  </BottomInfoTicket>
-                </TicketCard>
-              ))}
-            </ul>
-          </div>
-          <div>
-            {displayTicket === true ? (
-              <TicketDetails ticketData={ticketData} userData={userData} />
-            ) : (
-              <div
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  alignContent: 'center',
-                  display: 'flex',
-                  height: '100%'
-                }}>
-                Click on ticket to display details
-              </div>
-            )}
-          </div>
-        </DashboardCard>
+                  Click on ticket to display details
+                </div>
+              )}
+            </div>
+          </DashboardCard>
+        ) : (
+          <BasicTable />
+        )}
         <TicketChart count={count} />
       </Wrapper>
     </>

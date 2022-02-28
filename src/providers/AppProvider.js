@@ -9,8 +9,7 @@ export const AppContext = React.createContext({
   setUserData: () => {},
   deleteTicket: () => {},
   setDisplayTicket: () => {},
-  sendToTester: () => {},
-  sendToPM: () => {}
+  ChangeValue: () => {}
 });
 
 const AppProvider = ({ children }) => {
@@ -30,21 +29,16 @@ const AppProvider = ({ children }) => {
     setTickets(updatedTicketArray);
   };
 
-  const sendToTester = (id) => {
+  const ChangeValue = (id) => {
     let updatedTicket = tickets.map((item) => {
       if (item.id === id) {
-        item.assigned = 'tester';
-        setDisplayTicket(false);
-      }
-      return item;
-    });
-    setTickets(updatedTicket);
-  };
-  const sendToPM = (id) => {
-    let updatedTicket = tickets.map((item) => {
-      if (item.id === id) {
-        item.assigned = 'PM';
-        setDisplayTicket(false);
+        if (item.assigned === 'developer') {
+          item.assigned = 'tester';
+          setDisplayTicket(false);
+        } else {
+          item.assigned = 'PM';
+          setDisplayTicket(false);
+        }
       }
       return item;
     });
@@ -61,8 +55,7 @@ const AppProvider = ({ children }) => {
         deleteTicket,
         displayTicket,
         setDisplayTicket,
-        sendToTester,
-        sendToPM
+        ChangeValue
       }}>
       {children}
     </AppContext.Provider>

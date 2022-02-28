@@ -141,3 +141,9 @@ export const BottomInfoTicket = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
+export const Title = styled.div`
+  font-weight: 700;
+  text-align: center;
+  margin: 20px;
+`;

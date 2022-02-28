@@ -19,7 +19,6 @@ const TicketChart = ({ count }) => {
           { title: 'Production', value: count['prod'], color: '#f44336' }
         ]}
       />
-      ;
       <ExtraInfoFromChart>
         <span>Dev tickets {count.dev}</span>
         <span>Test tickets {count.test}</span>

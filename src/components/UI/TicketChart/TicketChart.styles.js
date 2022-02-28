@@ -4,6 +4,7 @@ export const PieChartCard = styled.div`
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   border-radius: 20px;
   padding: 30px;
+  min-width: 300px;
   span {
     display: inline-block;
     text-align: center;
