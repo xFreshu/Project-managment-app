@@ -1,7 +1,6 @@
 import React from 'react';
-import BasicTable from '../Table/BasicTable';
-import Navigation from '../Navigation/Navigation';
-import PropTypes from 'prop-types';
+import BasicTable from '../../components/UI/Table/BasicTable';
+import Navigation from '../../components/UI/Navigation/Navigation';
 
 const ListOfTasks = () => {
   return (

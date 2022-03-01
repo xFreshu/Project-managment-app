@@ -19,6 +19,16 @@ const Navigation = () => {
             <Link to="/list-of-tasks">List of tasks</Link>
           </li>
         ) : null}
+        {userData.role === 'client' ? (
+          <>
+            <li>
+              <Link to="/dashboard">Tickets</Link>
+            </li>
+            <li>
+              <Link to="/create-ticket">Create ticket</Link>
+            </li>
+          </>
+        ) : null}
         <li>
           <Link to="/">Logout</Link>
         </li>
