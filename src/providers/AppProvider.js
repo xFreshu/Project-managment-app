@@ -24,11 +24,6 @@ const AppProvider = ({ children }) => {
   });
   const [userData, setUserData] = useState(name);
 
-  const deleteTicket = (id) => {
-    const updatedTicketArray = tickets.filter((item) => item.id !== id);
-    setDisplayTicket(false);
-    setTickets(updatedTicketArray);
-  };
   const changeStatus = (id) => {
     let updatedTicket = tickets.map((item) => {
       if (item.id === id) {
@@ -44,10 +39,15 @@ const AppProvider = ({ children }) => {
       if (item.id === id) {
         if (item.assigned === 'developer') {
           item.assigned = 'tester';
+          item.status = 'pending';
+          setDisplayTicket(false);
+        } else if (item.assigned === 'tester') {
+          item.assigned = 'PM';
+          item.status = 'pending';
           setDisplayTicket(false);
         } else {
-          item.assigned = 'PM';
-          setDisplayTicket(false);
+          item.assigned = 'client';
+          item.status = 'done';
         }
       }
       return item;
@@ -62,7 +62,6 @@ const AppProvider = ({ children }) => {
         setTickets,
         userData,
         setUserData,
-        deleteTicket,
         displayTicket,
         setDisplayTicket,
         ChangeValue,
