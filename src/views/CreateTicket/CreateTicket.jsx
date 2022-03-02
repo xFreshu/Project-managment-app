@@ -1,16 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Navigation from '../../components/UI/Navigation/Navigation';
-import {
-  Container,
-  ErrorMessage,
-  LoginCard,
-  Question,
-  StyledButton,
-  StyledInput,
-  StyledLabel
-} from '../../components/UI/Login/Login.styles';
+import { Container, LoginCard, StyledButton } from '../../components/UI/Login/Login.styles';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import { AppContext } from '../../providers/AppProvider';
 
 const TicketCard = styled(LoginCard)`
   display: flex;
@@ -21,13 +14,18 @@ const TicketForm = styled.form`
   width: 100%;
 `;
 const CreateTicket = () => {
+  const { tickets, setTickets } = useContext(AppContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const generateID = Math.random().toString(36).slice(2);
+  const onSubmit = (data) => {
+    setTickets([...tickets, { ...data, assigned: 'developer', status: 'pending', id: generateID }]);
+    reset();
+  };
   return (
     <>
       <Navigation />
@@ -35,8 +33,8 @@ const CreateTicket = () => {
         <TicketCard>
           <TicketForm onSubmit={handleSubmit(onSubmit)}>
             <label>Ticket name</label>
-            <input {...register('ticketName', { required: true })} />
-            {errors.ticketName && <span>This field is required</span>}
+            <input {...register('name', { required: true })} />
+            {errors.name && <span>This field is required</span>}
             <label>Notes</label>
             <textarea {...register('notes', { required: true })} />
             {errors.notes && <span>This field is required</span>}

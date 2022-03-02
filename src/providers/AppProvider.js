@@ -9,7 +9,8 @@ export const AppContext = React.createContext({
   setUserData: () => {},
   deleteTicket: () => {},
   setDisplayTicket: () => {},
-  ChangeValue: () => {}
+  ChangeValue: () => {},
+  changeStatus: () => {}
 });
 
 const AppProvider = ({ children }) => {
@@ -28,7 +29,16 @@ const AppProvider = ({ children }) => {
     setDisplayTicket(false);
     setTickets(updatedTicketArray);
   };
-
+  const changeStatus = (id) => {
+    let updatedTicket = tickets.map((item) => {
+      if (item.id === id) {
+        if (item.status === 'In progress') item.status = 'Pending';
+        else item.status = 'In progress';
+      }
+      return item;
+    });
+    setTickets(updatedTicket);
+  };
   const ChangeValue = (id) => {
     let updatedTicket = tickets.map((item) => {
       if (item.id === id) {
@@ -55,7 +65,8 @@ const AppProvider = ({ children }) => {
         deleteTicket,
         displayTicket,
         setDisplayTicket,
-        ChangeValue
+        ChangeValue,
+        changeStatus
       }}>
       {children}
     </AppContext.Provider>

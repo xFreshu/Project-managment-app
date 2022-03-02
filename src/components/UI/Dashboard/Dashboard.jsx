@@ -47,7 +47,7 @@ const Dashboard = () => {
             <div>
               <ul>
                 <Title>Assigned tickets</Title>
-                {getAssignedArray.map(({ id, name, notes, environment, deadline }) => (
+                {getAssignedArray.map(({ id, name, notes, environment, deadline, status }) => (
                   <TicketCard
                     onClick={() => {
                       setTicketData({
@@ -55,7 +55,8 @@ const Dashboard = () => {
                         name: name,
                         notes: notes,
                         environment: environment,
-                        deadline: deadline
+                        deadline: deadline,
+                        status: status
                       });
                       setDisplayTicket(true);
                     }}>
@@ -67,6 +68,7 @@ const Dashboard = () => {
                     <BottomInfoTicket>
                       <StyledEnv value={environment}>{environment}</StyledEnv>
                       <span>{deadline}</span>
+                      <span>{status}</span>
                     </BottomInfoTicket>
                   </TicketCard>
                 ))}

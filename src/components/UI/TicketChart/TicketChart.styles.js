@@ -5,6 +5,11 @@ export const PieChartCard = styled.div`
   border-radius: 20px;
   padding: 30px;
   min-width: 300px;
+  position: fixed;
+  background-color: #fff;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
   span {
     display: inline-block;
     text-align: center;

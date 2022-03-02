@@ -6,8 +6,7 @@ export const DUMMY_DATA = [
     assigned: 'developer',
     environment: 'test',
     deadline: '16-2-2022',
-    status: 'In progress',
-    statusValue: 2
+    status: 'In progress'
   },
   {
     id: 2,
@@ -17,8 +16,7 @@ export const DUMMY_DATA = [
     assigned: 'tester',
     environment: 'test',
     deadline: '13-2-2022',
-    status: 'pending',
-    statusValue: 1
+    status: 'pending'
   },
   {
     id: 3,
@@ -27,7 +25,6 @@ export const DUMMY_DATA = [
     assigned: 'PM',
     environment: 'dev',
     deadline: '20-2-2022',
-    status: 'done',
-    statusValue: 1
+    status: 'pending'
   }
 ];

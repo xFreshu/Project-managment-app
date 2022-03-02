@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StyledTable = styled.table`
   border-spacing: 0;
   border: 1px solid black;
+  margin-right: 360px;
   tr {
     :nth-child(even) {
       background-color: #f2f2f2;
@@ -31,7 +32,7 @@ export const StyledTable = styled.table`
       width: 100px;
     }
     :nth-child(5) {
-      width: 100px;
+      width: 40px;
     }
     :nth-child(6) {
       width: 100px;
@@ -42,6 +43,7 @@ export const StyledTable = styled.table`
   }
   th,
   td {
+    text-align: justify;
     margin: 0;
     padding: 0.5rem;
     border-bottom: 1px solid black;
