@@ -13,6 +13,40 @@ const TicketForm = styled.form`
   flex-direction: column;
   width: 100%;
 `;
+
+const StyledLabel = styled.label`
+  margin: 25px 0 10px 0;
+  font-size: 1.1rem;
+  :first-child {
+    margin-top: 0;
+  }
+`;
+const StyledInput = styled.input`
+  font-size: 1.3rem;
+  padding: 10px;
+  outline: none;
+  border: solid 1px #0009;
+  border-radius: 10px;
+`;
+
+const StyledTextarea = styled.textarea`
+  font-size: 1.3rem;
+  padding: 10px;
+  outline: none;
+  border: solid 1px #0009;
+  border-radius: 10px;
+  resize: none;
+  height: 200px;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+const CreateTicketContainer = styled(Container)`
+  height: 93.8vh;
+  position: absolute;
+`;
+
 const CreateTicket = () => {
   const { tickets, setTickets } = useContext(AppContext);
   const {
@@ -29,25 +63,25 @@ const CreateTicket = () => {
   return (
     <>
       <Navigation />
-      <Container>
+      <CreateTicketContainer>
         <TicketCard>
           <TicketForm onSubmit={handleSubmit(onSubmit)}>
-            <label>Ticket name</label>
-            <input {...register('name', { required: true })} />
+            <StyledLabel>Ticket name</StyledLabel>
+            <StyledInput {...register('name', { required: true })} />
             {errors.name && <span>This field is required</span>}
-            <label>Notes</label>
-            <textarea {...register('notes', { required: true })} />
+            <StyledLabel>Notes</StyledLabel>
+            <StyledTextarea {...register('notes', { required: true })} />
             {errors.notes && <span>This field is required</span>}
-            <label>Environment</label>
-            <input {...register('environment', { required: true })} />
+            <StyledLabel>Environment</StyledLabel>
+            <StyledInput {...register('environment', { required: true })} />
             {errors.environment && <span>This field is required</span>}
-            <label>Deadline</label>
-            <input type="date" {...register('deadline', { required: true })} />
+            <StyledLabel>Deadline</StyledLabel>
+            <StyledInput type="date" {...register('deadline', { required: true })} />
             {errors.deadline && <span>This field is required</span>}
             <StyledButton>Submit</StyledButton>
           </TicketForm>
         </TicketCard>
-      </Container>
+      </CreateTicketContainer>
     </>
   );
 };

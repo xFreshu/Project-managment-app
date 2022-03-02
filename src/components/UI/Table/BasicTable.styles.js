@@ -32,7 +32,7 @@ export const StyledTable = styled.table`
       width: 100px;
     }
     :nth-child(5) {
-      width: 40px;
+      width: 100px;
     }
     :nth-child(6) {
       width: 100px;

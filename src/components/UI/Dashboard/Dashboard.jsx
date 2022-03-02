@@ -14,7 +14,7 @@ import TicketChart from '../TicketChart/TicketChart';
 import BasicTable from '../Table/BasicTable';
 
 const Dashboard = () => {
-  let { userData, tickets, deleteTicket, displayTicket, setDisplayTicket } = useContext(AppContext);
+  let { userData, tickets, displayTicket, setDisplayTicket } = useContext(AppContext);
   //Get the right one Array depending on the role
   const getAssignedArray = tickets.filter((item) => item.assigned === userData.role);
   const [ticketData, setTicketData] = useState({
@@ -25,19 +25,6 @@ const Dashboard = () => {
     deadline: ''
   });
 
-  const environmentList = tickets.map((item) => item.environment);
-
-  const count = { dev: 0, test: 0, prod: 0 };
-  //For of loop through array of environment list and counting, returning object
-  for (const element of environmentList) {
-    if (count[element]) {
-      count[element] += 1;
-    } else {
-      count[element] = 1;
-    }
-  }
-
-  console.log(count);
   return (
     <>
       <Navigation userData={userData} />
@@ -62,7 +49,7 @@ const Dashboard = () => {
                     }}>
                     <div>
                       <span>{name}</span>
-                      <span>{id}</span>
+                      <span>#{id}</span>
                     </div>
                     <p>{notes}</p>
                     <BottomInfoTicket>
@@ -94,7 +81,7 @@ const Dashboard = () => {
         ) : (
           <BasicTable />
         )}
-        <TicketChart count={count} />
+        <TicketChart />
       </Wrapper>
     </>
   );

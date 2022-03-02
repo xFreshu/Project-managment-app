@@ -16,15 +16,15 @@ export const COLUMNS = [
     accessor: 'assigned'
   },
   {
+    Header: 'Status',
+    accessor: 'status'
+  },
+  {
     Header: 'Environment',
     accessor: 'environment'
   },
   {
     Header: 'Deadline',
     accessor: 'deadline'
-  },
-  {
-    Header: 'Status',
-    accessor: 'status'
   }
 ];

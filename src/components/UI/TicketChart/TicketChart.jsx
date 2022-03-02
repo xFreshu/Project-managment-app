@@ -4,8 +4,23 @@ import PropTypes from 'prop-types';
 import { PieChartCard, ExtraInfoFromChart } from './TicketChart.styles';
 import { AppContext } from '../../../providers/AppProvider';
 
-const TicketChart = ({ count }) => {
+const TicketChart = () => {
   const { tickets } = useContext(AppContext);
+
+  const environmentList = tickets.map((item) => item.environment);
+
+  const count = { dev: 0, test: 0, prod: 0 };
+  //For of loop through array of environment list and counting, returning object
+  for (const element of environmentList) {
+    if (count[element]) {
+      count[element] += 1;
+    } else {
+      count[element] = 1;
+    }
+  }
+
+  console.log(count);
+
   return (
     <PieChartCard>
       <span>Ticket Pie Chart</span>
@@ -26,10 +41,6 @@ const TicketChart = ({ count }) => {
       </ExtraInfoFromChart>
     </PieChartCard>
   );
-};
-
-TicketChart.propTypes = {
-  count: PropTypes.object
 };
 
 export default TicketChart;
